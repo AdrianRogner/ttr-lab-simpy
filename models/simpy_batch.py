@@ -4,20 +4,23 @@
 # The service time is exponentially distributed with a mean of 0.5 time units.
 # The simulation should run for 1000 time units.
 # The output should be an array of the service times for each customer.
+# SimPy simulation of an M/M/1 queueing system with batch arrivals.
 
 import simpy
 from statistics import mean
 import random
 import numpy as np
 
-# Parameters for 1a
-#arrival_rate = 90.0
-#service_rate = 100.0
+# Parameters for 2a and 3a
+#arrival_rate = 18.0 # Arrival rate (lambda) / 5
+#service_rate = 126.0 # 2a
+#service_rate = 142.0 # 3a
 num_requests = 1_000_000
 
-# Parameters for 1b
-arrival_rate = 180.0
-service_rate = 190.0
+# Parameters for 2b and 3b
+arrival_rate = 36 # Arrival rate (lambda) / 5
+#service_rate = 216.0 # 2b
+service_rate = 234.0 # 3b
 
 # Results
 response_times = []
@@ -30,7 +33,12 @@ server = simpy.Resource(env, capacity=1)
 def request_generator(env):
     for i in range(num_requests):
         yield env.timeout(random.expovariate(arrival_rate))
-        env.process(process_request(env))
+
+        # Simulate a batch of requests
+        num_file_requests = random.randint(1, 9)
+
+        for _ in range(num_file_requests):
+            env.process(process_request(env))
 
 def process_request(env):
     arrival_time = env.now
