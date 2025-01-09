@@ -89,9 +89,31 @@ Use the plot functions defined in the file `visualization/plots.py` to visualize
 
 Include each plot in this report and interpret the results.
 
+**Answer**:
 
+![histogram plot](images/histogram.png)
+
+![scatter plot](images/scatter.png)
+
+![percentiles plot](images/percentiles.png)
+
+![heatmap plot](images/heatmap.png)
+
+In the histogram plot we can see the majority of the response time is between 0 and 400 ms. 
+
+In the scatter plot we don't see clearly the distribution of the response time. but we can affirm that there are some plot where the response time is higher than 400 ms.
+
+In the percentile plot the mean and median response time is under 100 ms. We have a precise idea about the 95th percentile, it is around 200 ms and the 99th is between 200 and 600 ms.
+
+In the heatmap plot we can see that during the whole simulation there are not big response time, during the simulation all the plot are in the reasonable range of response time (under 130 ms).
 
 Conclusion
 ----------
 
 Document your conclusions here. What did you learn from the simulation results?
+
+**Answer**:
+
+In these simulations we saw the effort we have to do to have a good response time. We saw the service rate is affected by the arrival rate and how they come. When it's in batch it's a lot heavier in request so the service rate has to be higher even with the same arrival rate as an M/M/1 model. 
+
+if we want to satisfy the 99th percentile we have to increase even more the service rate. this case can happen in real life and it impacts a lot the experience of the end user. So we are forced to have a good service rate to have a good response time. 

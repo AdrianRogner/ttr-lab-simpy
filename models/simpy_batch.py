@@ -60,3 +60,22 @@ mean_response_time = np.mean(response_times)
 print(f'Mean response time: {mean_response_time:.4f} s')
 response_time_99 = np.percentile(response_times, 99)
 print(f'Response time (99th percentile): {response_time_99:.4f} s')
+
+# ---------------------------------------------------------------------------
+# Visualization
+
+from visualization.plots import histogram_plot, scatter_plot, percentile_plot, heatmap_plot
+
+Numpy_array_response_times = np.array(response_times)
+
+# Histogram plot
+histogram_plot(Numpy_array_response_times)
+
+# scatter plot
+scatter_plot(Numpy_array_response_times)
+
+# Percentile plot
+percentile_plot(Numpy_array_response_times)
+
+# Heatmap plot
+heatmap_plot(Numpy_array_response_times)
